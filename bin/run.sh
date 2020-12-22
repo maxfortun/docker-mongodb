@@ -29,6 +29,8 @@ GUEST_MNT=${GUEST_MNT:-$BWD/mnt}
 
 DOCKER_RUN_ARGS+=( -v $GUEST_MNT/etc/mongo:/etc/mongo )
 DOCKER_RUN_ARGS+=( -v $GUEST_MNT/var/lib/mongodb:/var/lib/mongodb )
+DOCKER_RUN_ARGS+=( -e MONGO_INITDB_ROOT_USERNAME_FILE=/etc/mongo/admin-username )
+DOCKER_RUN_ARGS+=( -e MONGO_INITDB_ROOT_PASSWORD_FILE=/etc/mongo/admin-password )
 
 docker update --restart=no $NAME || true
 docker stop $NAME || true
