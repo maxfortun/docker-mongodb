@@ -1,4 +1,6 @@
 FROM mongo
 
-CMD [ "--config", "/etc/mongo/mongod.conf" ]
+COPY docker-entrypoint.sh /usr/local/bin/
+CMD [ "/usr/local/bin/docker-entrypoint.sh" ]
+
 
